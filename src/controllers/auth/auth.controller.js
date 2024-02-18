@@ -1,5 +1,9 @@
-export const register = (req, res) => {
-  res.send("Oks");
+export const register = async (req, res, next) => {
+  try {
+    res.send("Oks");
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const logout = (req, res) => {
