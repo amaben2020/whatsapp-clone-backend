@@ -9,6 +9,7 @@ dotenv.config();
 
 // Morgan:  status logger
 if (process.NODE_ENV !== "production") {
+  // only use in development
   app.use(morgan("dev"));
 }
 
