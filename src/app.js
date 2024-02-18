@@ -6,6 +6,7 @@ import express from "express";
 import expressFileUpload from "express-fileupload";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
+import createHttpError from "http-errors";
 import morgan from "morgan";
 const app = express();
 
@@ -53,9 +54,31 @@ app.use(
     origin: "http:localhost:5173",
   }),
 );
+
+// formatting http based errors
+app.use(async (err, req, res, next) => {
+  res.status(err.status || 500);
+
+  res.send({
+    error: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  });
+});
+
+// custom Not Found route error handler
+// app.use(async (req, res, next) => {
+//   next(createHttpError.NotFound("This route does not exist"));
+// });
+
 // routes
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello" });
+});
+
+app.post("/test", () => {
+  throw createHttpError.BadRequest("There was an error");
 });
 
 export default app;
