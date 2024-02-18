@@ -8,6 +8,7 @@ import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
 import createHttpError from "http-errors";
 import morgan from "morgan";
+import routes from "./routes/index.js";
 const app = express();
 
 // app middlewares
@@ -73,6 +74,8 @@ app.use(async (err, req, res, next) => {
 // });
 
 // routes
+app.use("/api/v1", routes);
+
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello" });
 });
