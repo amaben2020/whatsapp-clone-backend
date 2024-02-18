@@ -65,3 +65,17 @@
 {"level":"info","message":"Running..."}
 {"level":"info","message":"Running..."}
 {"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"code":8000,"codeName":"AtlasError","connectionGeneration":0,"level":"error","ok":0}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"error","message":"Connection to MongoDB failed"}
+{"level":"info","message":"Running..."}
+{"level":"error","message":"Connection to MongoDB failed"}
+{"level":"info","message":"Running..."}
+{"level":"error","message":"Connection to MongoDB failed"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}

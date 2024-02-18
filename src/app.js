@@ -7,13 +7,34 @@ import expressFileUpload from "express-fileupload";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
 import createHttpError from "http-errors";
+import mongoose from "mongoose";
 import morgan from "morgan";
+import { logger } from "./configs/logger.js";
 import routes from "./routes/index.js";
+
 const app = express();
 
 // app middlewares
 // .env vars
 dotenv.config();
+
+// exit on mongodb error
+mongoose.connection.on("error", (error) => {
+  logger.error(`Connection ended due to ${error}`);
+  process.exit(1);
+});
+
+mongoose
+  .connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    logger.info("Connected successfully to MongoDB");
+  })
+  .catch(() => {
+    logger.error("Connection to MongoDB failed");
+  });
 
 // invoking middlewares (you could chain them) app.use().helmet().....
 // Morgan:  status logger
