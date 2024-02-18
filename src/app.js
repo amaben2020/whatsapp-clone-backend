@@ -47,6 +47,7 @@ app.use(
   }),
 );
 
+// using cors to prevent unauthorized clients
 app.use(
   cors({
     origin: "http:localhost:5173",
