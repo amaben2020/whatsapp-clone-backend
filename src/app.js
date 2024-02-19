@@ -17,6 +17,7 @@ const app = express();
 // app middlewares
 // .env vars
 dotenv.config();
+const { MONGODB_URL } = process.env;
 
 // exit on mongodb error
 mongoose.connection.on("error", (error) => {
@@ -24,16 +25,17 @@ mongoose.connection.on("error", (error) => {
   process.exit(1);
 });
 
+// establishing async connection with mongodb
 mongoose
-  .connect(process.env.MONGODB_URL, {
+  .connect(MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    logger.info("Connected successfully to MongoDB");
+    logger.info("Connected successfully to MongoDB ✅");
   })
   .catch(() => {
-    logger.error("Connection to MongoDB failed");
+    logger.error("Connection to MongoDB failed ❌");
   });
 
 // invoking middlewares (you could chain them) app.use().helmet().....
@@ -88,11 +90,6 @@ app.use(async (err, req, res, next) => {
     },
   });
 });
-
-// custom Not Found route error handler
-// app.use(async (req, res, next) => {
-//   next(createHttpError.NotFound("This route does not exist"));
-// });
 
 // routes
 app.use("/api/v1", routes);
