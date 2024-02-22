@@ -6,6 +6,7 @@ export const register = async (req, res, next) => {
     const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process?.env;
 
     const { name, email, picture, password, status } = req.body;
+
     const newUser = await createUser({
       name,
       email,
@@ -43,7 +44,10 @@ export const register = async (req, res, next) => {
       message: "Registration successful",
       access_token,
       user: {
-        ...newUser,
+        name: newUser.name,
+        email: newUser.email,
+        picture: newUser.picture,
+        status: newUser.status,
       },
     });
   } catch (error) {

@@ -48,7 +48,9 @@ UserSchema.pre("save", async function (next) {
       this.password = hashedPwd;
     }
     next(); // saves the new user to db
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 const UserModel = mongoose.model("UserModel", UserSchema);
