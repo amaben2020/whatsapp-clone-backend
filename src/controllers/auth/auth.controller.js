@@ -1,5 +1,5 @@
-import { createUser } from "../../utils/createUser";
-import { generateToken } from "../../utils/generateToken";
+import { createUser } from "../../utils/createUser.js";
+import { generateToken } from "../../utils/generateToken.js";
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 

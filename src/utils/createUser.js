@@ -1,6 +1,7 @@
-import { createHttpError } from "http-errors";
+import pkg from "http-errors";
 import validator from "validator";
-import UserModel from "../models/UserModel";
+import UserModel from "../models/UserModel.js";
+const { createHttpError } = pkg;
 
 export const createUser = async (newUserData) => {
   const { name, email, picture, password, status } = newUserData;
@@ -24,8 +25,8 @@ export const createUser = async (newUserData) => {
     throw createHttpError.BadRequest("Invalid email provided");
   }
 
-  // check if user already exists
-  const user = await new UserModel.create({
+  // // check if user already exists
+  await new UserModel.create({
     name,
     email,
     picture,
