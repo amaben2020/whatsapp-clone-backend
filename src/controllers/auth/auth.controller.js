@@ -116,7 +116,7 @@ export const login = asyncHandler(async (req, res) => {
 });
 
 export const logout = asyncHandler(async (req, res) => {
-  req.clearCookie("refreshToken", {
+  res.clearCookie("refreshToken", {
     path: "/api/v1/auth/refreshToken",
   });
 
