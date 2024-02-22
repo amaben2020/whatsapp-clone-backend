@@ -177,3 +177,7 @@ export const refreshToken = asyncHandler(async (req, res) => {
 
   // send to the client the cookie and user data
 });
+
+export const test = (req, res) => {
+  res.send("ok");
+};
