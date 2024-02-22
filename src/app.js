@@ -14,7 +14,8 @@ import routes from "./routes/index.js";
 
 const app = express();
 
-// app middlewares
+// app middlewares: It is those methods/functions/operations that are called BETWEEN processing the Request and sending the Response in your application method.
+
 // .env vars
 dotenv.config();
 const { MONGODB_URL } = process.env;
@@ -48,8 +49,10 @@ if (process.NODE_ENV !== "production") {
 // helmet for security
 app.use(helmet());
 
-// parsing without body parser
+// parsing the incoming Request Object without body parser
 app.use(express.json());
+
+// recognizes the incoming Request Object as strings or arrays
 app.use(
   express.urlencoded({
     extended: true,

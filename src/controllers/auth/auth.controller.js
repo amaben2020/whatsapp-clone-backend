@@ -1,6 +1,5 @@
 export const register = async (req, res, next) => {
   try {
-    res.send("Oks");
   } catch (error) {
     next(error);
   }
