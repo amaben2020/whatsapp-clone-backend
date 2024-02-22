@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import validator from "validator";
 
@@ -30,11 +31,25 @@ const UserSchema = mongoose.Schema(
       default: "Hey there, i'm using whatsapp",
     },
   },
+
   {
     collection: "users",
     timestamps: true,
   },
 );
+// enables hashing the password without doing it in a separate file
+UserSchema.pre("save", async function (next) {
+  try {
+    if (this.isNew) {
+      const salt = await bcrypt.genSalt(12);
+
+      const hashedPwd = await bcrypt.hash(this.password, salt);
+
+      this.password = hashedPwd;
+    }
+    next(); // saves the new user to db
+  } catch (error) {}
+});
 
 const UserModel =
   mongoose.models.UserModel || mongoose.model("UserModel", UserSchema);

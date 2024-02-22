@@ -1,7 +1,8 @@
 import { createHttpError } from "http-errors";
 import validator from "validator";
+import UserModel from "../models/UserModel";
 
-export const createUser = (newUserData) => {
+export const createUser = async (newUserData) => {
   const { name, email, picture, password, status } = newUserData;
 
   if (
@@ -14,4 +15,25 @@ export const createUser = (newUserData) => {
       "Please name should not be less than 2 characters or greater than 16 characters",
     );
   }
+
+  if (status.length > 64) {
+    throw createHttpError.BadRequest("Status should be less than 64 chars");
+  }
+
+  if (!validator.isEmail(email)) {
+    throw createHttpError.BadRequest("Invalid email provided");
+  }
+
+  // check if user already exists
+  const user = await new UserModel.create({
+    name,
+    email,
+    picture,
+    password,
+    status,
+  }).save();
+
+  // hash the password
+
+  // use the pre function in mongoose
 };
