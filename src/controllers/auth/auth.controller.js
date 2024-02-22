@@ -1,16 +1,18 @@
+const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
+
 export const register = async (req, res, next) => {
   try {
     const newUser = {};
-    const access_token = genToken({
+    const access_token = generateToken({
       userId: newUser._id,
       expiry: "1d",
-      secret: process.env.ACCESS_TOKEN_SECRET,
+      secret: ACCESS_TOKEN_SECRET,
     });
 
     const refresh_token = genToken({
       userId: newUser._id,
       expiry: "30d",
-      secret: process.env.REFRESH_TOKEN_SECRET,
+      secret: REFRESH_TOKEN_SECRET,
     });
   } catch (error) {
     next(error);
