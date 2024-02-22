@@ -39,7 +39,7 @@ export const register = async (req, res, next) => {
     res.cookie("refreshToken", refresh_token, {
       httpOnly: true,
       path: "/api/v1/auth/refreshToken",
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+      maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
     });
 
     // send the user with access_token and data
@@ -66,9 +66,19 @@ export const login = asyncHandler(async (req, res) => {
   // check if password matched
   const isUserPassword = await bcrypt.compare(password, user?.password);
 
+  if (!user) {
+    res.send("User does not exist");
+  }
+
+  if (!isUserPassword) {
+    res.send("Password incorrect");
+  }
+
   if (!isUserPassword || !user) {
     throw createHttpError.BadRequest("User does not exist");
   }
+
+  const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process?.env;
 
   const access_token = await generateToken(
     {
@@ -90,7 +100,7 @@ export const login = asyncHandler(async (req, res) => {
   res.cookie("refreshToken", refresh_token, {
     httpOnly: true,
     path: "/api/v1/auth/refreshToken",
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
   });
 
   res.status(200).json({
@@ -106,7 +116,13 @@ export const login = asyncHandler(async (req, res) => {
 });
 
 export const logout = asyncHandler(async (req, res) => {
-  res.send("Oks");
+  req.clearCookie("refreshToken", {
+    path: "/api/v1/auth/refreshToken",
+  });
+
+  res.json({
+    message: "Logout successful",
+  });
 });
 
 export const refreshToken = asyncHandler(async (req, res) => {
