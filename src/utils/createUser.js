@@ -35,8 +35,4 @@ export const createUser = async (newUserData) => {
   });
 
   return user;
-
-  // hash the password
-
-  // use the pre function in mongoose
 };
