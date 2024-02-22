@@ -24,7 +24,7 @@ const UserSchema = mongoose.Schema(
     picture: {
       type: String,
       required: [true, "Please provide a picture"],
-      default: "",
+      default: "https://via.placeholder.com/350x150",
     },
     status: {
       type: String,
@@ -51,7 +51,6 @@ UserSchema.pre("save", async function (next) {
   } catch (error) {}
 });
 
-const UserModel =
-  mongoose.models.UserModel || mongoose.model("UserModel", UserSchema);
+const UserModel = mongoose.model("UserModel", UserSchema);
 
 export default UserModel;

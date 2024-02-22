@@ -1,10 +1,10 @@
 import { createUser } from "../../utils/createUser.js";
 import { generateToken } from "../../utils/generateToken.js";
 
-const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
-
 export const register = async (req, res, next) => {
   try {
+    const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process?.env;
+
     const { name, email, picture, password, status } = req.body;
     const newUser = await createUser({
       name,
@@ -13,9 +13,10 @@ export const register = async (req, res, next) => {
       password,
       status,
     });
+
     const access_token = await generateToken(
       {
-        userId: newUser._id,
+        userId: newUser?._id,
       },
       ACCESS_TOKEN_SECRET,
       "1d",
@@ -36,7 +37,6 @@ export const register = async (req, res, next) => {
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
 
-    console.table(refresh_token, access_token);
     // send the user with access_token and data
 
     res.status(201).json({
@@ -47,6 +47,7 @@ export const register = async (req, res, next) => {
       },
     });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

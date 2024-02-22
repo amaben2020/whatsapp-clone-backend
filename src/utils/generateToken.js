@@ -1,4 +1,6 @@
+import pkg from "http-errors";
 import jwt from "jsonwebtoken";
+const { createHttpError } = pkg;
 
 export const generateToken = async (payload, secret, expiry) => {
   // payload: an object that represents the data to be sent to client as token

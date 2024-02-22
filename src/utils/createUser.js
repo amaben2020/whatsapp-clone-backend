@@ -26,13 +26,15 @@ export const createUser = async (newUserData) => {
   }
 
   // // check if user already exists
-  await new UserModel.create({
+  const user = await UserModel.create({
     name,
     email,
     picture,
     password,
     status,
-  }).save();
+  });
+
+  return user;
 
   // hash the password
 

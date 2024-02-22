@@ -155,3 +155,67 @@
 {"level":"info","message":"Connected successfully to MongoDB ✅"}
 {"level":"info","message":"Running..."}
 {"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"_message":"UserModel validation failed","errors":{"password":{"kind":"minlength","message":"Password should be at least 6 characters","name":"ValidatorError","path":"password","properties":{"message":"Password should be at least 6 characters","minlength":6,"path":"password","type":"minlength","value":"1234"},"value":"1234"},"picture":{"kind":"required","message":"Please provide a picture","name":"ValidatorError","path":"picture","properties":{"message":"Please provide a picture","path":"picture","type":"required","value":""},"value":""}},"level":"error","message":"UserModel validation failed: password: Password should be at least 6 characters, picture: Please provide a picture","name":"ValidationError"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"_message":"UserModel validation failed","errors":{"picture":{"kind":"required","message":"Please provide a picture","name":"ValidatorError","path":"picture","properties":{"message":"Please provide a picture","path":"picture","type":"required","value":""},"value":""}},"level":"error","message":"UserModel validation failed: picture: Please provide a picture","name":"ValidationError"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"amaben@gmail5.com"},"level":"error"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
