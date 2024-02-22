@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import asyncHandler from "express-async-handler";
 import pkg from "http-errors";
+import jwt from "jsonwebtoken";
 import UserModel from "../../models/UserModel.js";
 import { createUser } from "../../utils/createUser.js";
 import { generateToken } from "../../utils/generateToken.js";
@@ -36,11 +37,15 @@ export const register = async (req, res, next) => {
     );
 
     // attach the refresh token to cookie
-    res.cookie("refreshToken", refresh_token, {
-      httpOnly: true,
-      path: "/api/v1/auth/refreshToken",
-      maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
-    });
+    res.cookie(
+      "refreshtoken",
+      refresh_token,
+      // , {
+      // httpOnly: true,
+      // path: "/api/v1/auth/refreshToken",
+      // maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
+      // }
+    );
 
     // send the user with access_token and data
     res.status(201).json({
@@ -95,13 +100,19 @@ export const login = asyncHandler(async (req, res) => {
     REFRESH_TOKEN_SECRET,
     "30d",
   );
-
+  console.log("refreshtoken", refresh_token);
   // attach the refresh token to cookie
-  res.cookie("refreshToken", refresh_token, {
-    httpOnly: true,
-    path: "/api/v1/auth/refreshToken",
-    maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
-  });
+  res.cookie(
+    "refreshtoken",
+    refresh_token,
+
+    // , {
+    // httpOnly: true,
+    // path: "/api/v1/auth/refreshToken",
+    // secure: process.env.NODE_ENV !== "development",
+    // maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
+    // }
+  );
 
   res.status(200).json({
     message: "User login successful",
@@ -116,7 +127,7 @@ export const login = asyncHandler(async (req, res) => {
 });
 
 export const logout = asyncHandler(async (req, res) => {
-  res.clearCookie("refreshToken", {
+  res.clearCookie("refreshtoken", {
     path: "/api/v1/auth/refreshToken",
   });
 
@@ -126,5 +137,43 @@ export const logout = asyncHandler(async (req, res) => {
 });
 
 export const refreshToken = asyncHandler(async (req, res) => {
-  res.send("Oks");
+  // grab the refresh token from cookie
+
+  const refreshTokenInCookie = req.cookies["refreshtoken"];
+  let userId = "";
+  jwt.verify(
+    refreshTokenInCookie,
+    process.env.REFRESH_TOKEN_SECRET,
+    (err, decoded) => {
+      if (err) {
+        console.log("Error", err);
+      } else {
+        userId = decoded.userId;
+      }
+    },
+  );
+
+  console.log("userId", userId);
+  const userInDB = await UserModel.findOne({ _id: userId });
+
+  const access_token = await generateToken(
+    {
+      userId: userInDB?._id,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    "1d",
+  );
+
+  res.json({
+    message: "Token refresh successful",
+    access_token,
+    user: {
+      name: userInDB?.name,
+      email: userInDB?.email,
+      picture: userInDB?.picture,
+      status: userInDB?.status,
+    },
+  });
+
+  // send to the client the cookie and user data
 });

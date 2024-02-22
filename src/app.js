@@ -59,11 +59,11 @@ app.use(
   }),
 );
 
-// sanitizing mongodb queries
-app.use(mongoSanitize());
-
 // cookie parser for cookies during auth
 app.use(cookieParser());
+
+// sanitizing mongodb queries
+app.use(mongoSanitize());
 
 // compression is a method of compressing files (such as HTML, CSS, and JavaScript) to reduce their size before they are sent to the browser: This will make your JSON response and other static file responses smaller.
 app.use(compression());
