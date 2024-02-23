@@ -1,4 +1,5 @@
 // used by requests i.e GET that requires a logged in user
+//https://blog.webdevsimplified.com/2019-12/express-middleware-in-depth/
 
 import jsonwebtoken from "jsonwebtoken";
 
@@ -13,8 +14,12 @@ export function authMiddleware(req, res, next) {
     process.env.ACCESS_TOKEN_SECRET,
   );
 
+  if (!isVerified) {
+    throw "Something went wrong";
+  }
+
   if (isVerified) {
-    console.log("yeah");
+    req.user = isVerified.userId;
     next();
   }
 }

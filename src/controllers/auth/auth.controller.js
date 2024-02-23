@@ -179,5 +179,6 @@ export const refreshToken = asyncHandler(async (req, res) => {
 });
 
 export const test = (req, res) => {
+  console.log(req.user);
   res.send("ok");
 };
