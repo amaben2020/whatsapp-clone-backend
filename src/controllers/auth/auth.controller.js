@@ -50,12 +50,12 @@ export const register = async (req, res, next) => {
     // send the user with access_token and data
     res.status(201).json({
       message: "Registration successful",
-      access_token,
       user: {
         name: newUser.name,
         email: newUser.email,
         picture: newUser.picture,
         status: newUser.status,
+        token: access_token,
       },
     });
   } catch (error) {
