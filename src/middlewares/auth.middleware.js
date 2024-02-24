@@ -20,6 +20,7 @@ export function authMiddleware(req, res, next) {
 
   if (isVerified) {
     req.user = isVerified.userId;
-    next();
+    // stops further propagation
+    return next();
   }
 }
