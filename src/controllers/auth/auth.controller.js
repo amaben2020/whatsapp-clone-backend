@@ -116,12 +116,13 @@ export const login = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     message: "User login successful",
-    access_token: access_token,
+
     user: {
       name: user?.name,
       email: user?.email,
       picture: user?.picture,
       status: user?.status,
+      token: access_token,
     },
   });
 });
@@ -166,12 +167,12 @@ export const refreshToken = asyncHandler(async (req, res) => {
 
   res.json({
     message: "Token refresh successful",
-    access_token,
     user: {
       name: userInDB?.name,
       email: userInDB?.email,
       picture: userInDB?.picture,
       status: userInDB?.status,
+      token: access_token,
     },
   });
 
