@@ -23,7 +23,6 @@ const UserSchema = mongoose.Schema(
     },
     picture: {
       type: String,
-
       default: "https://via.placeholder.com/350x150",
     },
     status: {

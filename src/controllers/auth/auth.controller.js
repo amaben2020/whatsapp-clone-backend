@@ -11,7 +11,7 @@ export const register = async (req, res, next) => {
     const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process?.env;
 
     const { name, email, picture, password, status } = req.body;
-
+    console.log("Picture", picture);
     const newUser = await createUser({
       name,
       email,
