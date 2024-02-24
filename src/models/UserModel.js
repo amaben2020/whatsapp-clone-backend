@@ -23,7 +23,7 @@ const UserSchema = mongoose.Schema(
     },
     picture: {
       type: String,
-      required: [true, "Please provide a picture"],
+
       default: "https://via.placeholder.com/350x150",
     },
     status: {

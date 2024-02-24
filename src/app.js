@@ -76,11 +76,7 @@ app.use(
 );
 
 // using cors to prevent unauthorized clients
-app.use(
-  cors({
-    origin: "http:localhost:5173",
-  }),
-);
+app.use(cors());
 
 // formatting http based errors
 app.use(async (err, req, res, next) => {
