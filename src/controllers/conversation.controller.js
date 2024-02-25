@@ -17,17 +17,12 @@ export const create_open_conversation = async (req, res, next) => {
 
     // check if the convo exists for the 2 users
     const convoExists = await doesConvoExist(senderId, receiverId);
+    console.log("convoExists", convoExists);
 
-    const populatedConvos = await populateConvo(
-      convoExists._id,
-      "users",
-      "-password",
-    );
-
-    if (!convoExists.length > 0) {
+    if (convoExists === undefined) {
       // create a new convo
       const receiver = await UserModel.findOne({ _id: receiverId });
-
+      console.log("receiver", receiver);
       let convoData = {
         name: receiver?.name,
         users: [senderId, receiverId],
@@ -37,6 +32,7 @@ export const create_open_conversation = async (req, res, next) => {
       const createNewConvo = await ConversationModel.create({
         ...convoData,
       });
+      console.log("createNewConvo", createNewConvo);
       // populate it with users and password
       const populatedNewlyCreatedConvos = await populateConvo(
         createNewConvo._id,
@@ -47,6 +43,14 @@ export const create_open_conversation = async (req, res, next) => {
       return res.status(200).json(populatedNewlyCreatedConvos);
     } else {
       // send the convo to client
+      const populatedConvos = await populateConvo(
+        convoExists?._id,
+        "users",
+        "-password",
+      );
+
+      console.log("populatedConvos", populatedConvos);
+
       return res.status(200).json(populatedConvos);
     }
   } catch (error) {
