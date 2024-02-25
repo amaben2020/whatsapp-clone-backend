@@ -5,6 +5,7 @@ import UserModel from "../models/UserModel.js";
 import { doesConvoExist } from "../services/conversations/doesConvoExist.js";
 import { getUserConversations } from "../services/conversations/getUserConversations.js";
 import { populateConvo } from "../services/conversations/populateConvo.js";
+
 // this is a private convo i.e message between 2 users
 export const create_open_conversation = async (req, res, next) => {
   try {
@@ -19,7 +20,6 @@ export const create_open_conversation = async (req, res, next) => {
 
     // check if the convo exists for the 2 users
     const convoExists = await doesConvoExist(senderId, receiverId);
-    console.log("convoExists", convoExists);
 
     if (convoExists === undefined) {
       // create a new convo
@@ -34,7 +34,7 @@ export const create_open_conversation = async (req, res, next) => {
       const createNewConvo = await ConversationModel.create({
         ...convoData,
       });
-      console.log("createNewConvo", createNewConvo);
+
       // populate it with users and password
       const populatedNewlyCreatedConvos = await populateConvo(
         createNewConvo._id,
@@ -51,8 +51,6 @@ export const create_open_conversation = async (req, res, next) => {
         "-password",
       );
 
-      console.log("populatedConvos", populatedConvos);
-
       return res.status(200).json(populatedConvos);
     }
   } catch (error) {
@@ -63,8 +61,6 @@ export const create_open_conversation = async (req, res, next) => {
 export const getConversation = expressAsyncHandler(async (req, res, next) => {
   // return the conversations of a specific user
   const senderId = req.user;
-
-  console.log(senderId);
 
   const userConversations = await getUserConversations(senderId);
 
