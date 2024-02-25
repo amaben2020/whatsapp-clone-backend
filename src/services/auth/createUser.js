@@ -1,6 +1,6 @@
 import pkg from "http-errors";
 import validator from "validator";
-import UserModel from "../models/UserModel.js";
+import UserModel from "../../models/UserModel.js";
 const { createHttpError } = pkg;
 
 export const createUser = async (newUserData) => {

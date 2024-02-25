@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 import pkg from "http-errors";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/UserModel.js";
-import { createUser } from "../services/createUser.js";
+import { createUser } from "../services/auth/createUser.js";
 import { generateToken } from "../utils/generateToken.js";
 const { createHttpError } = pkg;
 export const register = async (req, res, next) => {

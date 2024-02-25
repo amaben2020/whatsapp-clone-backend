@@ -19,3 +19,15 @@
 {"_message":"UserModel validation failed","errors":{"picture":{"kind":"required","message":"Please provide a picture","name":"ValidatorError","path":"picture","properties":{"message":"Please provide a picture","path":"picture","type":"required","value":""},"value":""}},"level":"error","message":"UserModel validation failed: picture: Please provide a picture","name":"ValidationError"}
 {"code":11000,"index":0,"keyPattern":{"email":1},"keyValue":{"email":"amaben@gmail5.com"},"level":"error"}
 {"level":"error","message":"Connection to MongoDB failed ❌"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}

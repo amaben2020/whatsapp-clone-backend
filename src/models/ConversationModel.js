@@ -1,4 +1,4 @@
-import { default as ObjectId, default as mongoose } from "mongoose";
+import { Schema, default as mongoose } from "mongoose";
 const ConversationSchema = mongoose.Schema({
   name: {
     type: String,
@@ -12,16 +12,16 @@ const ConversationSchema = mongoose.Schema({
   },
   users: [
     {
-      type: ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "UserModel",
     },
   ],
   latestMessage: {
-    type: ObjectId,
-    ref: "LatestMessageModel",
+    type: Schema.Types.ObjectId,
+    ref: "LatestMessage",
   },
   admin: {
-    type: ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "UserModel",
   },
 });
