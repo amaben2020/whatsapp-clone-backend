@@ -6,8 +6,8 @@ import {
   refreshToken,
   register,
   test,
-} from "../../controllers/auth/auth.controller.js";
-import { authMiddleware } from "../../middlewares/auth.middleware.js";
+} from "../controllers/auth/auth.controller.js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 const router = express.Router();
 
 router.route("/register").post(trimRequest.all, register);
