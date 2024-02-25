@@ -2,16 +2,16 @@ import bcrypt from "bcrypt";
 import asyncHandler from "express-async-handler";
 import pkg from "http-errors";
 import jwt from "jsonwebtoken";
-import UserModel from "../../models/UserModel.js";
-import { createUser } from "../../utils/createUser.js";
-import { generateToken } from "../../utils/generateToken.js";
+import UserModel from "../models/UserModel.js";
+import { createUser } from "../services/createUser.js";
+import { generateToken } from "../utils/generateToken.js";
 const { createHttpError } = pkg;
 export const register = async (req, res, next) => {
   try {
     const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process?.env;
 
     const { name, email, picture, password, status } = req.body;
-    console.log("Picture", picture);
+
     const newUser = await createUser({
       name,
       email,
@@ -100,7 +100,7 @@ export const login = asyncHandler(async (req, res) => {
     REFRESH_TOKEN_SECRET,
     "30d",
   );
-  console.log("refreshtoken", refresh_token);
+
   // attach the refresh token to cookie
   res.cookie(
     "refreshtoken",
@@ -154,7 +154,6 @@ export const refreshToken = asyncHandler(async (req, res) => {
     },
   );
 
-  console.log("userId", userId);
   const userInDB = await UserModel.findOne({ _id: userId });
 
   const access_token = await generateToken(

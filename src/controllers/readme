@@ -1,0 +1,1 @@
+No model should be interacted with here, they should all be in the service to promote reusability across the app
