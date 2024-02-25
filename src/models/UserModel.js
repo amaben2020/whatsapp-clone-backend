@@ -36,6 +36,7 @@ const UserSchema = mongoose.Schema(
     timestamps: true,
   },
 );
+
 // enables hashing the password without doing it in a separate file
 UserSchema.pre("save", async function (next) {
   try {
