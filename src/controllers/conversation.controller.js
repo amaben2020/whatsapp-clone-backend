@@ -1,3 +1,4 @@
+import expressAsyncHandler from "express-async-handler";
 import createHttpError from "http-errors";
 import ConversationModel from "../models/ConversationModel.js";
 import UserModel from "../models/UserModel.js";
@@ -58,4 +59,11 @@ export const create_open_conversation = async (req, res, next) => {
   }
 };
 
-export const getConversation = async () => {};
+export const getConversation = expressAsyncHandler(async (req, res, next) => {
+  // return the conversations of a specific user
+  const senderId = req.user.userId;
+
+  console.log(senderId);
+
+  // ensure the shape is exactly as that of create
+});
