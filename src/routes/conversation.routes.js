@@ -12,6 +12,6 @@ router
   .route("/")
   .post(trimRequest.all, authMiddleware, create_open_conversation);
 
-router.route("/").post(trimRequest.all, authMiddleware, getConversation);
+router.route("/").get(trimRequest.all, authMiddleware, getConversation);
 
 export default router;

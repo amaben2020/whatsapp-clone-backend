@@ -3,6 +3,7 @@ import createHttpError from "http-errors";
 import ConversationModel from "../models/ConversationModel.js";
 import UserModel from "../models/UserModel.js";
 import { doesConvoExist } from "../services/conversations/doesConvoExist.js";
+import { getUserConversations } from "../services/conversations/getUserConversations.js";
 import { populateConvo } from "../services/conversations/populateConvo.js";
 // this is a private convo i.e message between 2 users
 export const create_open_conversation = async (req, res, next) => {
@@ -61,9 +62,17 @@ export const create_open_conversation = async (req, res, next) => {
 
 export const getConversation = expressAsyncHandler(async (req, res, next) => {
   // return the conversations of a specific user
-  const senderId = req.user.userId;
+  const senderId = req.user;
 
   console.log(senderId);
 
-  // ensure the shape is exactly as that of create
+  const userConversations = await getUserConversations(senderId);
+
+  if (userConversations) {
+    res.json({
+      message: "Conversations fetched successfully",
+      data: userConversations,
+    });
+  }
+  throw createHttpError.HttpError("Conversation not found");
 });
