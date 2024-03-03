@@ -1,5 +1,6 @@
 import { updateLatestMessage } from "../services/conversations/updateLatestMessage.js";
 import { createMessage } from "../services/messages/createMessage.js";
+import { getConversationMessages } from "../services/messages/getConversationMessages.js";
 import { populateMessage } from "../services/messages/populateMessage.js";
 
 export const sendMessage = async (req, res) => {
@@ -33,4 +34,12 @@ export const sendMessage = async (req, res) => {
     console.log(error);
   }
 };
-export const getMessages = async (req, res) => {};
+export const getMessages = async (req, res) => {
+  const convoId = req.params.convo_id;
+
+  const conversations = await getConversationMessages(convoId);
+
+  console.log(conversations);
+
+  res.status(200).json({ conversations });
+};

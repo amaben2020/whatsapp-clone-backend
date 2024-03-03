@@ -14,7 +14,7 @@ const MessageSchema = mongoose.Schema(
     },
     conversation: {
       type: ObjectId,
-      ref: "ConversationModel",
+      ref: "Conversation",
     },
     files: [],
   },
