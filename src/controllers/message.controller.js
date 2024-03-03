@@ -2,6 +2,7 @@ import { updateLatestMessage } from "../services/conversations/updateLatestMessa
 import { createMessage } from "../services/messages/createMessage.js";
 import { getConversationMessages } from "../services/messages/getConversationMessages.js";
 import { populateMessage } from "../services/messages/populateMessage.js";
+import { createHttpError } from "../utils/createHttpError.js";
 
 export const sendMessage = async (req, res) => {
   try {
@@ -37,9 +38,15 @@ export const sendMessage = async (req, res) => {
 export const getMessages = async (req, res) => {
   const convoId = req.params.convo_id;
 
+  if (!convoId) {
+    return createHttpError.BadRequest("Conversation id is undefined");
+  }
+
   const conversations = await getConversationMessages(convoId);
 
-  console.log(conversations);
+  if (!conversations.length) {
+    return createHttpError.BadRequest("Conversation id is undefined");
+  }
 
-  res.status(200).json({ conversations });
+  res.status(200).json({ messages: conversations });
 };
