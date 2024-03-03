@@ -24,7 +24,6 @@ export const create_open_conversation = async (req, res, next) => {
     if (convoExists === undefined) {
       // create a new convo
       const receiver = await UserModel.findOne({ _id: receiverId });
-      console.log("receiver", receiver);
       let convoData = {
         name: receiver?.name,
         users: [senderId, receiverId],
