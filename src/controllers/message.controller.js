@@ -47,6 +47,5 @@ export const getMessages = async (req, res) => {
   if (!conversations.length) {
     return createHttpError.BadRequest("Conversation id is undefined");
   }
-
   res.status(200).json({ messages: conversations });
 };
