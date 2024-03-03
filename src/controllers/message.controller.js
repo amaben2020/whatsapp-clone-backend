@@ -1,3 +1,4 @@
+import { updateLatestMessage } from "../services/conversations/updateLatestMessage.js";
 import { createMessage } from "../services/messages/createMessage.js";
 import { populateMessage } from "../services/messages/populateMessage.js";
 
@@ -29,9 +30,8 @@ export const sendMessage = async (req, res) => {
     const newMessage = await createMessage(msgData);
     // create a populate message service to flesh out all properties
 
-    console.log(newMessage?._id);
-
     const populatedMessage = await populateMessage(newMessage?._id);
+    await updateLatestMessage(conversation_id, newMessage);
     res.json({ message: populatedMessage });
   } catch (error) {
     console.log(error);
