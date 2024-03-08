@@ -31,3 +31,4 @@
 {"level":"error"}
 {"level":"error"}
 {"level":"error"}
+{"level":"error","message":"Connection to MongoDB failed ❌"}

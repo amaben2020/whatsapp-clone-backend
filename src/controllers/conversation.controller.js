@@ -68,6 +68,8 @@ export const getConversation = expressAsyncHandler(async (req, res, next) => {
       message: "Conversations fetched successfully",
       data: userConversations,
     });
+  } else {
+    res.send("No conversation found for this user");
   }
   throw createHttpError.HttpError("Conversation not found");
 });
