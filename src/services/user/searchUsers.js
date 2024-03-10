@@ -12,6 +12,7 @@ export const searchUsers = async (userData, id) => {
     ],
   }).find({
     _id: {
+      // not equal
       $ne: id,
     },
   });
