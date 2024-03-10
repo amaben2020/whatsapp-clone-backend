@@ -1201,3 +1201,15 @@
 {"level":"info","message":"Connected successfully to MongoDB ✅"}
 {"level":"info","message":"Running..."}
 {"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"error","path":"users"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"error","path":"-password"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}
+{"level":"info","message":"Running..."}
+{"level":"info","message":"Connected successfully to MongoDB ✅"}

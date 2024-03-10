@@ -10,12 +10,15 @@ export const searchUsers = async (userData, id) => {
         name: { $regex: userData, $options: "i" },
       },
     ],
-  }).find({
-    _id: {
-      // not equal: gives every other field except this
-      $ne: id,
-    },
-  });
+  })
+    .find({
+      _id: {
+        // not equal: gives every other field except this
+        $ne: id,
+      },
+    })
+    // select just chooses or removes certain props
+    .select("-password");
 
   console.log("USERS", users);
 

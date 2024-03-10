@@ -46,3 +46,5 @@
 {"$clusterTime":{"clusterTime":{"$timestamp":"7344763705340461061"},"signature":{"hash":"vsfXqKAQXK+J8pb/ZO0EfogURa0=","keyId":{"high":1699471362,"low":14,"unsigned":false}}},"code":2,"codeName":"BadValue","level":"error","ok":0,"operationTime":{"$timestamp":"7344763705340461061"}}
 {"$clusterTime":{"clusterTime":{"$timestamp":"7344764379650326541"},"signature":{"hash":"WbO3MvyXisrk3admF0cQE42GVSo=","keyId":{"high":1699471362,"low":14,"unsigned":false}}},"code":2,"codeName":"BadValue","level":"error","ok":0,"operationTime":{"$timestamp":"7344764379650326541"}}
 {"$clusterTime":{"clusterTime":{"$timestamp":"7344764568628887554"},"signature":{"hash":"o2efcieBQW3TGcTrp24L4liskNw=","keyId":{"high":1699471362,"low":14,"unsigned":false}}},"code":2,"codeName":"BadValue","level":"error","ok":0,"operationTime":{"$timestamp":"7344764568628887554"}}
+{"level":"error","path":"users"}
+{"level":"error","path":"-password"}
