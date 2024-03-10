@@ -12,7 +12,7 @@ export const searchUsers = async (userData, id) => {
     ],
   }).find({
     _id: {
-      // not equal
+      // not equal: gives every other field except this
       $ne: id,
     },
   });
