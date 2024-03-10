@@ -3,6 +3,8 @@ import { searchUsers } from "../services/user/searchUsers.js";
 export const getUsers = async (req, res, next) => {
   const userData = req.query.search;
   const id = req.user;
+
+  console.log("Id", id);
   // create a search users by email or name service
 
   const users = await searchUsers(userData, id);

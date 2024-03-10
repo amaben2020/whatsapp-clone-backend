@@ -1,8 +1,19 @@
 import { UserModel } from "../../models/index.js";
 
 export const searchUsers = async (userData, id) => {
-  const users = UserModel.find({
-    name: { $regex: userData, $options: "i" },
+  const users = await UserModel.find({
+    $or: [
+      {
+        email: { $regex: userData },
+      },
+      {
+        name: { $regex: userData, $options: "i" },
+      },
+    ],
+  }).find({
+    _id: {
+      $ne: id,
+    },
   });
 
   console.log("USERS", users);
