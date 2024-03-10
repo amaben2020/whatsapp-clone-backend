@@ -4,16 +4,11 @@ export const getUsers = async (req, res, next) => {
   const userData = req.query.search;
   const id = req.user;
 
-  console.log("Id", id);
-  // create a search users by email or name service
+  if (userData.length > 0) {
+    const users = await searchUsers(userData, id);
 
-  const users = await searchUsers(userData, id);
-
-  // use regex to search for the users
-
-  // exclude the user id
-
-  console.log("userData", userData);
-
-  res.json(users);
+    res.json(users ?? []);
+  } else {
+    res.json([]);
+  }
 };

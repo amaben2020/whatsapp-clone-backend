@@ -20,7 +20,5 @@ export const searchUsers = async (userData, id) => {
     // select just chooses or removes certain props
     .select("-password");
 
-  console.log("USERS", users);
-
   return users;
 };

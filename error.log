@@ -48,3 +48,11 @@
 {"$clusterTime":{"clusterTime":{"$timestamp":"7344764568628887554"},"signature":{"hash":"o2efcieBQW3TGcTrp24L4liskNw=","keyId":{"high":1699471362,"low":14,"unsigned":false}}},"code":2,"codeName":"BadValue","level":"error","ok":0,"operationTime":{"$timestamp":"7344764568628887554"}}
 {"level":"error","path":"users"}
 {"level":"error","path":"-password"}
+{"level":"error"}
+{"code":"ERR_HTTP_HEADERS_SENT","level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
