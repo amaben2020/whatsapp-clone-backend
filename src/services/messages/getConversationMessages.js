@@ -10,6 +10,8 @@ export const getConversationMessages = async (id) => {
       throw Error("Something went wrong");
     }
 
+    console.log("messages", messages);
+
     return messages;
   } catch (error) {
     console.log(error);
