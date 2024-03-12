@@ -62,9 +62,9 @@ export const getConversation = expressAsyncHandler(async (req, res, next) => {
   const senderId = req.user;
 
   const userConversations = await getUserConversations(senderId);
-
+  console.log("userConversations", userConversations);
   if (userConversations) {
-    res.json({
+    res.status(201).json({
       message: "Conversations fetched successfully",
       data: userConversations,
     });
