@@ -15,6 +15,7 @@ export function authMiddleware(req, res, next) {
   );
 
   if (!isVerified) {
+    res.send("jwt token expired");
     throw "Something went wrong";
   }
 

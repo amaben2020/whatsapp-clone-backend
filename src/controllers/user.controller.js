@@ -9,6 +9,6 @@ export const getUsers = async (req, res, next) => {
 
     res.json(users ?? []);
   } else {
-    res.json([]);
+    res.status(401).json([]);
   }
 };
