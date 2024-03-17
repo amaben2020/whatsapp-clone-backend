@@ -39,7 +39,7 @@ export const getMessages = async (req, res) => {
   const convoId = req.params.convo_id;
 
   if (!convoId) {
-    return createHttpError.BadRequest("Conversation id is undefined");
+    return createHttpError.BadRequest(`Conversation `);
   }
 
   const conversations = await getConversationMessages(convoId);

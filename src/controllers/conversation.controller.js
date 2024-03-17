@@ -60,16 +60,16 @@ export const create_open_conversation = async (req, res, next) => {
 export const getConversation = expressAsyncHandler(async (req, res, next) => {
   // return the conversations of a specific user
   const senderId = req.user;
-
   const userConversations = await getUserConversations(senderId);
-  console.log("userConversations", userConversations);
-  if (userConversations) {
+  if (userConversations.length > 0) {
     res.status(201).json({
       message: "Conversations fetched successfully",
       data: userConversations,
     });
   } else {
-    res.send("No conversation found for this user");
+    throw createHttpError.HttpError("Conversation not found");
   }
-  throw createHttpError.HttpError("Conversation not found");
+  // else {
+  //   res.send("No conversation found for this user");
+  // }
 });

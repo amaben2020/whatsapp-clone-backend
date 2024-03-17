@@ -10,5 +10,7 @@ export const getUserConversations = async (userId) => {
     .populate("latestMessage")
     .populate("admin", "-password");
 
-  return convo[0];
+  console.log(convo);
+
+  return convo;
 };
