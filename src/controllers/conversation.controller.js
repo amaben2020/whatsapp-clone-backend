@@ -57,7 +57,7 @@ export const create_open_conversation = async (req, res, next) => {
   }
 };
 
-export const getConversation = expressAsyncHandler(async (req, res, next) => {
+export const getConversation = expressAsyncHandler(async (req, res) => {
   // return the conversations of a specific user
   const senderId = req.user;
   const userConversations = await getUserConversations(senderId);
@@ -67,9 +67,7 @@ export const getConversation = expressAsyncHandler(async (req, res, next) => {
       data: userConversations,
     });
   } else {
+    res.send("No conversation found for this user");
     throw createHttpError.HttpError("Conversation not found");
   }
-  // else {
-  //   res.send("No conversation found for this user");
-  // }
 });
