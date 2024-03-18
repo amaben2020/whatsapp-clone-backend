@@ -44,8 +44,10 @@ export const getMessages = async (req, res) => {
 
   const conversations = await getConversationMessages(convoId);
 
-  if (!conversations.length) {
-    return createHttpError.BadRequest("Conversation id is undefined");
+  if (!conversations) {
+    // return createHttpError.BadRequest("Conversation id is undefined");
+    res.status(404).send("Message not found");
+  } else {
+    res.status(200).json({ messages: conversations });
   }
-  res.status(200).json({ messages: conversations });
 };
